@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container::before {
+            content: "";
+            background: url('/img/bg.jpg')no-repeat center center/cover;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 120%;
+            width: 100%;
+            opacity: 0.6;
+            z-index: -1;
+
+        }
+
+        .form-group {
+
+            padding: 3px 30px;
+            font-family: 'Estonia', cursive;
+
+        }
+
+        .container {
+            font-family: 'Estonia', cursive;
+            margin: 14px 85px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        #tt {
+            border-radius: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function validation() {
+            var name = document.getElementById('user').value;
+            var address = document.getElementById('address').value;
+            var mobile = document.getElementById('mobile').value;
+            var email = document.getElementById('email').value;
+            var quantity = document.getElementById('quantity').value;
+
+            if (name == "") {
+                document.getElementById('username').innerHTML = "**Please fill the name";
+                return false;
+            }
+            if ((name.length <= 2) || (name.length > 20)) {
+                document.getElementById('username').innerHTML = "**Exceeded the limit";
+                return false;
+            }
+            if (!isNaN(name)) {
+                document.getElementById('username').innerHTML = "**Please fill the vaild name";
+                return false;
+            }
+            if (address == "") {
+                document.getElementById('addresss').innerHTML = "**Please fill the address";
+                return false;
+            }
+
+            if (mobile == "") {
+                document.getElementById('mobiles').innerHTML = "**Please fill the mobile";
+                return false;
+            }
+            if (isNaN(mobile)) {
+                document.getElementById('mobiles').innerHTML = "**Please fill the vaild mobile number";
+                return false;
+            }
+            if (mobile.length != 10) {
+                document.getElementById('mobiles').innerHTML = "**Please fill the vaild mobile number";
+                return false;
+            }
+            if (email == "") {
+                document.getElementById('emails').innerHTML = "**Please fill the email";
+                return false;
+            }
+            if (email.indexof('@') <= 0) {
+                document.getElementById('emails').innerHTML = "**@ position invaild";
+                return false;
+            }
+            if ((email.charAT(email.length - 4) != '.') && (email.charAT(email.length - 3) != '.')) {
+                document.getElementById('emails').innerHTML = "**Please fill the vaild email";
+                return false;
+            }
+            if (quantity == "") {
+                document.getElementById('quantitys').innerHTML = "**Please fill the quantity";
+                return false;
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container"><br>
+        <h1 class="text-success text-center font-weight-bold">Place an Order</h1>
+        <div class="col-lg-7 m-auto d-block">
+            <form action="#" onsubmit="return validation()" class="bg-light" id="tt">
+
+                <div class="form-group">
+                    <label for="user">Name:</label>
+                    <input type="text" name="user" id="user" class="form-control" autocomplete="off">
+                    <span id="username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+                    <input type="text" name="Address" id="address" class="form-control" autocomplete="off">
+                    <span id="addresss" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile:</label>
+                    <input type="text" name="mobile" id="mobile" class="form-control" autocomplete="off">
+                    <span id="mobiles" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" autocomplete="off">
+                    <span id="emails" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="select">Select Item:</label>
+                    <select name="select" id="items" class="form-control">
+                        <option value="none" selected>None</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="pizza">Ice-cream</option>
+                        <option value="pizza">Sandwich</option>
+                        <option value="pizza">Hamburger</option>
+                        <option value="pizza">Hot Dog</option>
+                        <option value="pizza">Roast Chicken</option>
+                        <option value="pizza">French fries</option>
+                        <option value="pizza">Pakodas</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control" autocomplete="off">
+                    <span id="quantitys" class="text-danger"></span>
+                </div>
+                <input type="submit" value="Submit Now" class="btn btn-success ">
+                <input type="reset" value="Reset Now" class="btn btn-success  ">
+                <br>
+                <br>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
